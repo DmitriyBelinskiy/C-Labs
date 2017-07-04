@@ -1,6 +1,6 @@
 # Programming in C
 
-Here I am going to publish mor or less interesting problems solved by me on labs in Bauman Moscow State Technical University during my "Programming in C" course (4th semester).
+Here I am going to publish more or less interesting problems solved by me on labs in Bauman Moscow State Technical University during my "Programming in C" course (4th semester).
 
 Feel free to comment them.
 
