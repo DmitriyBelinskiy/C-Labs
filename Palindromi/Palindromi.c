@@ -1,9 +1,4 @@
-// Palindroms.cpp: определяет точку входа для консольного приложения.
-//
-
 #include "stdafx.h"
-#include <conio.h>
-
 
 bool PaliCheck(int num) {
 	const int D = 10;
@@ -30,6 +25,6 @@ int main()
 		if (PaliCheck(out)) {
 			printf("\n %i", out);
 		}
-	_getch();
+	
 	return 0;
 }
