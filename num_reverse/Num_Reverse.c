@@ -1,20 +1,20 @@
-#include "stdafx.h"
+п»ї#include "stdafx.h"
 
 int main()
 {
 	const int D(10);
 
 	int num(0), rev_num(0);
-	//Запрашиваем у пользователя число
+	//Р—Р°РїСЂР°С€РёРІР°РµРј Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ С‡РёСЃР»Рѕ
 	printf("Enter number to reverse: ");
 	scanf("%i", &num);
 
-	//Переворачиваем число
+	//РџРµСЂРµРІРѕСЂР°С‡РёРІР°РµРј С‡РёСЃР»Рѕ
 	do {
 		rev_num = rev_num*D + num%D;
 	} while (num /= D);
 
-	//Выводим результат на экран
+	//Р’С‹РІРѕРґРёРј СЂРµР·СѓР»СЊС‚Р°С‚ РЅР° СЌРєСЂР°РЅ
 	printf("%i", rev_num);
 	
 	return 0;
