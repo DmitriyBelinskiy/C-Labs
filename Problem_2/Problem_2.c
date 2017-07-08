@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+﻿#include "stdafx.h" //for Microsoft Visual Studio
 #include <time.h>
 #include <stdlib.h>
 
