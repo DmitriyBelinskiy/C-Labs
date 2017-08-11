@@ -23,8 +23,8 @@ int main()
 //Функция для проверки, является ли переданное ей число палиндромом. Возвращает истину или ложь.
 bool PaliCheck(int num) {
 	const int D = 10;
-	int rev_num(0), temp_num;
-	temp_num = num;
+	int rev_num(0);
+	int temp_num = num;
 
 	do {
 		rev_num = rev_num*D + temp_num%D;
