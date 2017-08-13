@@ -1,4 +1,4 @@
-/*Основные функции проекта*/
+/*РћСЃРЅРѕРІРЅС‹Рµ С„СѓРЅРєС†РёРё РїСЂРѕРµРєС‚Р°*/
 #include "stdafx.h"
 #include <stdlib.h>
 #include <string.h>
@@ -7,37 +7,37 @@
 #include "support_func.h"
 
 void start_dic() {
-/*Основная функция, обрабатывающая выбранный пользователем пункт меню*/
-	system("color F0"); //для красоты :)
+/*РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ, РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‰Р°СЏ РІС‹Р±СЂР°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј РїСѓРЅРєС‚ РјРµРЅСЋ*/
+	system("color F0"); //РґР»СЏ РєСЂР°СЃРѕС‚С‹ :)
 	int num_workers(0);
 	worker *dic = NULL;
 	int cicle(1), m(0);
 	char *fn = "test.dat";
-	//Флаги для контроля существования и заполнения словаря
+	//Р¤Р»Р°РіРё РґР»СЏ РєРѕРЅС‚СЂРѕР»СЏ СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ Рё Р·Р°РїРѕР»РЅРµРЅРёСЏ СЃР»РѕРІР°СЂСЏ
 	int dic_exists_flag(0), dic_empty_flag(0);
 
-	//Цикл для выбора пункта меню словаря
+	//Р¦РёРєР» РґР»СЏ РІС‹Р±РѕСЂР° РїСѓРЅРєС‚Р° РјРµРЅСЋ СЃР»РѕРІР°СЂСЏ
 	while (cicle) {
-		//Функция со списком пунктов меню. Возвращает выбранный номер пункта.
+		//Р¤СѓРЅРєС†РёСЏ СЃРѕ СЃРїРёСЃРєРѕРј РїСѓРЅРєС‚РѕРІ РјРµРЅСЋ. Р’РѕР·РІСЂР°С‰Р°РµС‚ РІС‹Р±СЂР°РЅРЅС‹Р№ РЅРѕРјРµСЂ РїСѓРЅРєС‚Р°.
 		m = menu(dic, num_workers);
 		switch (m) {
-		case 0: cicle = 0; //Выход из программы
-			//Проверка существования словаря. Если словарь есть, освобождаем память и выходим из программы
+		case 0: cicle = 0; //Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹
+			//РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ СЃР»РѕРІР°СЂСЏ. Р•СЃР»Рё СЃР»РѕРІР°СЂСЊ РµСЃС‚СЊ, РѕСЃРІРѕР±РѕР¶РґР°РµРј РїР°РјСЏС‚СЊ Рё РІС‹С…РѕРґРёРј РёР· РїСЂРѕРіСЂР°РјРјС‹
 			if (dic_exists_flag == 1) 
 				freeMemory(dic);
 			dic_exists_flag = 0;
 			exit(1);
-		case 1: cicle = 1; //Создание словаря
-			//Создаем словарь, если его нет. 
+		case 1: cicle = 1; //РЎРѕР·РґР°РЅРёРµ СЃР»РѕРІР°СЂСЏ
+			//РЎРѕР·РґР°РµРј СЃР»РѕРІР°СЂСЊ, РµСЃР»Рё РµРіРѕ РЅРµС‚. 
 			if (dic_exists_flag == 0) {
 				dic = create_dic(&num_workers);
 				dic_exists_flag = 1;
 			} else printf("\n\tThe dictionary already exists.");
-			question_proceed(dic, dic_exists_flag); //Спрашиваем, что делать дальше
+			question_proceed(dic, dic_exists_flag); //РЎРїСЂР°С€РёРІР°РµРј, С‡С‚Рѕ РґРµР»Р°С‚СЊ РґР°Р»СЊС€Рµ
 			break;
 
-		case 2: cicle = 1; //Удаляем существующий словарь
-			//Удаляем словарь, если он есть
+		case 2: cicle = 1; //РЈРґР°Р»СЏРµРј СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ СЃР»РѕРІР°СЂСЊ
+			//РЈРґР°Р»СЏРµРј СЃР»РѕРІР°СЂСЊ, РµСЃР»Рё РѕРЅ РµСЃС‚СЊ
 			if (dic_exists_flag == 1) {
 				dic = del_dic(dic, num_workers);
 				dic_exists_flag = 0;
@@ -46,8 +46,8 @@ void start_dic() {
 			question_proceed(dic, dic_exists_flag);
 			break;
 			
-		case 3: cicle = 1; //Заполняем словарь
-			//Заполняем словарь, если он есть
+		case 3: cicle = 1; //Р—Р°РїРѕР»РЅСЏРµРј СЃР»РѕРІР°СЂСЊ
+			//Р—Р°РїРѕР»РЅСЏРµРј СЃР»РѕРІР°СЂСЊ, РµСЃР»Рё РѕРЅ РµСЃС‚СЊ
 			if (dic_exists_flag == 1) {
 				fill_dic(dic, num_workers);
 				dic_empty_flag = 1;
@@ -55,9 +55,9 @@ void start_dic() {
 				question_proceed(dic, dic_exists_flag);
 				break;
 
-		case 4: cicle = 1; //Выводим содержимое словаря на экран
+		case 4: cicle = 1; //Р’С‹РІРѕРґРёРј СЃРѕРґРµСЂР¶РёРјРѕРµ СЃР»РѕРІР°СЂСЏ РЅР° СЌРєСЂР°РЅ
 			if (dic_empty_flag == 1)
-				//Функция вывода содержимого словаря на экран
+				//Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃРѕРґРµСЂР¶РёРјРѕРіРѕ СЃР»РѕРІР°СЂСЏ РЅР° СЌРєСЂР°РЅ
 				show_dic(dic, num_workers);
 			else if (dic_exists_flag == 1)
 				printf("\n\tThe dictionary is empty.");
@@ -65,9 +65,9 @@ void start_dic() {
 			question_proceed(dic, dic_exists_flag);
 			break;
 
-		case 5: cicle = 1; //Сортируем словарь
+		case 5: cicle = 1; //РЎРѕСЂС‚РёСЂСѓРµРј СЃР»РѕРІР°СЂСЊ
 			if (dic_empty_flag == 1) {
-				//Функция для сортировки словаря
+				//Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё СЃР»РѕРІР°СЂСЏ
 				sort_dic(dic, num_workers);
 				break;
 			}
@@ -77,9 +77,9 @@ void start_dic() {
 			question_proceed(dic, dic_exists_flag);
 			break;
 	
-		case 6: cicle = 1; //Поиск в словаре
+		case 6: cicle = 1; //РџРѕРёСЃРє РІ СЃР»РѕРІР°СЂРµ
 			if (dic_empty_flag == 1)
-				//Функция для поиска в словаре
+				//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРѕРёСЃРєР° РІ СЃР»РѕРІР°СЂРµ
 				search_dic(dic, num_workers);
 			else if (dic_exists_flag == 1)
 				printf("\n\tThe dictionary is empty.");
@@ -87,7 +87,7 @@ void start_dic() {
 			question_proceed(dic, dic_exists_flag);
 			break;
 
-		case 7: cicle = 1; //Экспорт словаря в файл
+		case 7: cicle = 1; //Р­РєСЃРїРѕСЂС‚ СЃР»РѕРІР°СЂСЏ РІ С„Р°Р№Р»
 			if (dic_empty_flag == 1) {
 				if (!(export_file(fn, dic, num_workers))) {
 					printf("\n\tCan't open file!");
@@ -104,7 +104,7 @@ void start_dic() {
 			question_proceed(dic, dic_exists_flag);
 			break;
 
-		case 8: cicle = 1; //Выводим на экран словарь из файла
+		case 8: cicle = 1; //Р’С‹РІРѕРґРёРј РЅР° СЌРєСЂР°РЅ СЃР»РѕРІР°СЂСЊ РёР· С„Р°Р№Р»Р°
 			if (!(import_file(fn))) {
 				printf("\n\tCan't open file!");
 				break;
@@ -115,7 +115,7 @@ void start_dic() {
 	}
 }
 int menu(worker *p_dic, int num_w) {
-//Функция для выбора пункта меню.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹Р±РѕСЂР° РїСѓРЅРєС‚Р° РјРµРЅСЋ.
 	char code = '\0';
 	while (true) {
 		system("cls");
@@ -134,32 +134,32 @@ int menu(worker *p_dic, int num_w) {
 		scanf(" %c", &code);
 
 		system("cls");
-		//Выходим из цикла, если выбран один из пунктов
+		//Р’С‹С…РѕРґРёРј РёР· С†РёРєР»Р°, РµСЃР»Рё РІС‹Р±СЂР°РЅ РѕРґРёРЅ РёР· РїСѓРЅРєС‚РѕРІ
 		if (code == '0' || code == '1' || code == '2' || code == '3' || code == '4' || code == '5' || code == '6' || code == '7' || code == '8') break;
 
 		printf("\n\tYou have entered wrong number.");
 		question_proceed(p_dic, num_w);
 	}
-	//Преобразуем символьный тип в целочисленный
+	//РџСЂРµРѕР±СЂР°Р·СѓРµРј СЃРёРјРІРѕР»СЊРЅС‹Р№ С‚РёРї РІ С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹Р№
 	int code2 = atoi(&code);
 
 	return code2;
 }
 worker *create_dic(int *p_num_w) {
-//Функция для создания словаря. Возаращает указатель на начало словаря.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ СЃР»РѕРІР°СЂСЏ. Р’РѕР·Р°СЂР°С‰Р°РµС‚ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°С‡Р°Р»Рѕ СЃР»РѕРІР°СЂСЏ.
 	int num_w = 0;
 	printf("\n\tEnter number of workers: ");
-	scanf("%i", &num_w); //Запрашиваем количество работников.
+	scanf("%i", &num_w); //Р—Р°РїСЂР°С€РёРІР°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ СЂР°Р±РѕС‚РЅРёРєРѕРІ.
 	worker *fdic = new worker[num_w];
 
 	printf("\n\tThe dictionary was created. Number of workers: %i.", num_w);
-	*p_num_w = num_w; //Возвращаем через разименование количество работников
+	*p_num_w = num_w; //Р’РѕР·РІСЂР°С‰Р°РµРј С‡РµСЂРµР· СЂР°Р·РёРјРµРЅРѕРІР°РЅРёРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЂР°Р±РѕС‚РЅРёРєРѕРІ
 
 	return fdic;
 }
 void fill_dic(worker *p_dic, const int num_w) {
-/*Функция для заполнения словаря. Запрашиваем только фамилию. Остальные данные для 
-краткости заполняем случайными значениями.*/
+/*Р¤СѓРЅРєС†РёСЏ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ СЃР»РѕРІР°СЂСЏ. Р—Р°РїСЂР°С€РёРІР°РµРј С‚РѕР»СЊРєРѕ С„Р°РјРёР»РёСЋ. РћСЃС‚Р°Р»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ 
+РєСЂР°С‚РєРѕСЃС‚Рё Р·Р°РїРѕР»РЅСЏРµРј СЃР»СѓС‡Р°Р№РЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё.*/
 	srand((unsigned)time(NULL));
 	int count = 1;
 	while (getchar() != '\n');
@@ -173,7 +173,7 @@ void fill_dic(worker *p_dic, const int num_w) {
 	printf("\n\tThe dictionary was filled.");
 }
 void show_dic(worker *p_dic, const int num_w) { 
-//Функция для вывода содержимого словаря на экран
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° СЃРѕРґРµСЂР¶РёРјРѕРіРѕ СЃР»РѕРІР°СЂСЏ РЅР° СЌРєСЂР°РЅ
 	if (p_dic->fio == '\0') {
 		printf("\n\tThe dictionary is empty.");
 		return;
@@ -187,7 +187,7 @@ void show_dic(worker *p_dic, const int num_w) {
 	}
 }
 void sort_dic(worker *p_dic, int num_w) {
-	//Сортировка словаря
+	//РЎРѕСЂС‚РёСЂРѕРІРєР° СЃР»РѕРІР°СЂСЏ
 	if (p_dic[0].id == 0) {
 		printf("\n\tThe dictionary is empty.");
 		return;
@@ -196,9 +196,9 @@ void sort_dic(worker *p_dic, int num_w) {
 	do {
 		system("cls");
 		printf("\n\tEnter number: ");
-		printf("\n\t1 - to sort by FIO;");//Сортировка по ФИО
-		printf("\n\t2 - to sort by year of birth;");//По году рождения
-		printf("\n\t3 - to sort by salary;");//По зарплате
+		printf("\n\t1 - to sort by FIO;");//РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ Р¤РРћ
+		printf("\n\t2 - to sort by year of birth;");//РџРѕ РіРѕРґСѓ СЂРѕР¶РґРµРЅРёСЏ
+		printf("\n\t3 - to sort by salary;");//РџРѕ Р·Р°СЂРїР»Р°С‚Рµ
 		printf("\n\t0 - go to menu.");
 		printf("\n\tEnter number: ");
 		scanf("%i", &num);
@@ -208,21 +208,21 @@ void sort_dic(worker *p_dic, int num_w) {
 			break;
 		case 1: num == 1;
 			system("cls");
-			//Для сортировки используем функцию qsort. Сортировка по ФИО.
+			//Р”Р»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РёСЃРїРѕР»СЊР·СѓРµРј С„СѓРЅРєС†РёСЋ qsort. РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ Р¤РРћ.
 			qsort(p_dic, num_w, sizeof(worker), namecmp);
 			show_dic(p_dic, num_w);
 			question_proceed(p_dic, num_w);
 			break;
 		case 2: num == 2;
 			system("cls");
-			//Для сортировки используем функцию qsort. Сортировка по году рождения.
+			//Р”Р»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РёСЃРїРѕР»СЊР·СѓРµРј С„СѓРЅРєС†РёСЋ qsort. РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РіРѕРґСѓ СЂРѕР¶РґРµРЅРёСЏ.
 			qsort(p_dic, num_w, sizeof(worker), yearcmp);
 			show_dic(p_dic, num_w);
 			question_proceed(p_dic, num_w);
 			break;
 		case 3: num == 3;
 			system("cls");
-			//Для сортировки используем функцию qsort. Сортировка по зарплате.
+			//Р”Р»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РёСЃРїРѕР»СЊР·СѓРµРј С„СѓРЅРєС†РёСЋ qsort. РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ Р·Р°СЂРїР»Р°С‚Рµ.
 			qsort(p_dic, num_w, sizeof(worker), salarycmp);
 			show_dic(p_dic, num_w);
 			question_proceed(p_dic, num_w);
@@ -231,7 +231,7 @@ void sort_dic(worker *p_dic, int num_w) {
 	} while (num != 0);
 }
 void search_dic(worker *p_dic, int num_w) {
-//Функция для поиска введенного слова
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРѕРёСЃРєР° РІРІРµРґРµРЅРЅРѕРіРѕ СЃР»РѕРІР°
 	if (p_dic[0].fio == '\0') {
 		printf("\n\tThe dictionary is empty.");
 		return;
@@ -243,7 +243,7 @@ void search_dic(worker *p_dic, int num_w) {
 	while (getchar() != '\n');
 	scanf("%s", word_to_find);
 	
-	//Бинарный поиск введенного имени работника в словаре
+	//Р‘РёРЅР°СЂРЅС‹Р№ РїРѕРёСЃРє РІРІРµРґРµРЅРЅРѕРіРѕ РёРјРµРЅРё СЂР°Р±РѕС‚РЅРёРєР° РІ СЃР»РѕРІР°СЂРµ
 	flag = binar_search(p_dic, word_to_find, num_w, &num_in_dic);
 	if (flag) {
 		printf("\n\tThe dictionary contains the word: ");
@@ -256,7 +256,7 @@ void search_dic(worker *p_dic, int num_w) {
 	delete[]word_to_find;
 }
 worker *del_dic(worker *p_dic, int num_w) {
-//Функция для освобождения выделенной под словарь памяти
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕСЃРІРѕР±РѕР¶РґРµРЅРёСЏ РІС‹РґРµР»РµРЅРЅРѕР№ РїРѕРґ СЃР»РѕРІР°СЂСЊ РїР°РјСЏС‚Рё
 	delete[]p_dic;
 	p_dic = NULL;
 	printf("\n\tThe dictionary was deleted.");
@@ -264,7 +264,7 @@ worker *del_dic(worker *p_dic, int num_w) {
 }
 
 bool export_file(const char *fn, worker *p_dic, const int num_w) {
-//Функция для записи словаря в файл
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ Р·Р°РїРёСЃРё СЃР»РѕРІР°СЂСЏ РІ С„Р°Р№Р»
 	FILE *pf(NULL);
 	if (!(pf = fopen(fn, "wb")))
 		return false;
@@ -275,29 +275,29 @@ bool export_file(const char *fn, worker *p_dic, const int num_w) {
 }
 
 bool import_file(const char *fn) {
-	//Функция для чтения словаря из файла
+	//Р¤СѓРЅРєС†РёСЏ РґР»СЏ С‡С‚РµРЅРёСЏ СЃР»РѕРІР°СЂСЏ РёР· С„Р°Р№Р»Р°
 	FILE *pf(NULL);
 	if (!(pf = fopen(fn, "rb")))
 		return false;
 
-	//Вычисляем размер файла
+	//Р’С‹С‡РёСЃР»СЏРµРј СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°
 	fseek(pf, 0, SEEK_END);
 	long lSize = ftell(pf);
 	rewind(pf);
-	//Создаем временный буфер для данных
+	//РЎРѕР·РґР°РµРј РІСЂРµРјРµРЅРЅС‹Р№ Р±СѓС„РµСЂ РґР»СЏ РґР°РЅРЅС‹С…
 	char *buffer;
 	buffer = (char*)malloc(sizeof(char)*lSize);
-	//Вычисляем колличество работников и записываем результат в w_num
+	//Р’С‹С‡РёСЃР»СЏРµРј РєРѕР»Р»РёС‡РµСЃС‚РІРѕ СЂР°Р±РѕС‚РЅРёРєРѕРІ Рё Р·Р°РїРёСЃС‹РІР°РµРј СЂРµР·СѓР»СЊС‚Р°С‚ РІ w_num
 	int w_num(0);
 	while (fread((void*)buffer, sizeof(worker), 1, pf))
 		w_num++;
 	rewind(pf);
 	free(buffer);
 
-	//Создаем словар. Колличество работников равно w_num
+	//РЎРѕР·РґР°РµРј СЃР»РѕРІР°СЂ. РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЂР°Р±РѕС‚РЅРёРєРѕРІ СЂР°РІРЅРѕ w_num
 	worker *temp = new worker[w_num];
 
-	//Выводим данные из файла на экран
+	//Р’С‹РІРѕРґРёРј РґР°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р° РЅР° СЌРєСЂР°РЅ
 	printf("\n\tThe dictionary:\n");
 	printf("\n");
 	for (int i = 0; i < w_num; i++)
