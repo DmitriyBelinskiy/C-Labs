@@ -62,6 +62,6 @@ int binar_search(worker *p_dic, char *p_word, int num_w, int *pnum_id) {
 	return 0;
 }
 void freeMemory(worker *p_dic) {
-//Функция для освобождения памяти.
+//Функция для освобождения памяти
 	delete[]p_dic;
 }

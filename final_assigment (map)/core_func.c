@@ -8,7 +8,7 @@
 
 void start_dic() {
 /*Основная функция, обрабатывающая выбранный пользователем пункт меню*/
-	system("color F0"); //для красоты :)
+	system("color F0"); //для красоты :) 
 	int num_workers(0);
 	worker *dic = NULL;
 	int cicle(1), m(0);
