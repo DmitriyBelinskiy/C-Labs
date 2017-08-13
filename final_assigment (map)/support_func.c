@@ -1,4 +1,4 @@
-/*Дополнительные функции проекта*/
+/*Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ С„СѓРЅРєС†РёРё РїСЂРѕРµРєС‚Р°*/
 #include "stdafx.h"
 #include <stdlib.h>
 #include <string.h>
@@ -7,7 +7,7 @@
 
 
 void question_proceed(worker *p_dic, int dic_exists_flag) {
-//Функция для обработки вопроса пользователю, продолжать или выйти из программы
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РІРѕРїСЂРѕСЃР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ, РїСЂРѕРґРѕР»Р¶Р°С‚СЊ РёР»Рё РІС‹Р№С‚Рё РёР· РїСЂРѕРіСЂР°РјРјС‹
 	char answer;
 	do {
 		printf("\n\n\tType \"n\" to quit the program and \"y\" to proceed: ");
@@ -23,28 +23,28 @@ void question_proceed(worker *p_dic, int dic_exists_flag) {
 }
 
 int namecmp(const void *p_worker_1, const void *p_worker_2) {
-//Функция для вызова в qsort. Сортировка по имени.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹Р·РѕРІР° РІ qsort. РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РёРјРµРЅРё.
 	worker *p_temp_1 = (worker*)p_worker_1;
 	worker *p_temp_2 = (worker*)p_worker_2;
 
 	return stricmp(p_temp_1->fio, p_temp_2->fio);
 }
 int yearcmp(const void *p_worker_1, const void *p_worker_2) {
-//Функция для вызова в qsort. Сортировка по году рождения.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹Р·РѕРІР° РІ qsort. РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РіРѕРґСѓ СЂРѕР¶РґРµРЅРёСЏ.
 	worker *p_temp_1 = (worker *)p_worker_1;
 	worker *p_temp_2 = (worker *)p_worker_2;
 
 	return p_temp_1->year - p_temp_2->year;
 }
 int salarycmp(const void *p_worker_1, const void *p_worker_2) {
-//Функция для вызова в qsort. Сортировка по зарплате.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹Р·РѕРІР° РІ qsort. РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ Р·Р°СЂРїР»Р°С‚Рµ.
 	worker *p_temp_1 = (worker *)p_worker_1;
 	worker *p_temp_2 = (worker *)p_worker_2;
 
 	return p_temp_1->salary - p_temp_2->salary;
 }
 int binar_search(worker *p_dic, char *p_word, int num_w, int *pnum_id) {
-//Бинарный поиск имени работника в словаре
+//Р‘РёРЅР°СЂРЅС‹Р№ РїРѕРёСЃРє РёРјРµРЅРё СЂР°Р±РѕС‚РЅРёРєР° РІ СЃР»РѕРІР°СЂРµ
 	qsort(p_dic, num_w, sizeof(worker), namecmp);
 	int min = 0;
 	int max = num_w;
@@ -62,6 +62,6 @@ int binar_search(worker *p_dic, char *p_word, int num_w, int *pnum_id) {
 	return 0;
 }
 void freeMemory(worker *p_dic) {
-//Функция для освобождения памяти
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕСЃРІРѕР±РѕР¶РґРµРЅРёСЏ РїР°РјСЏС‚Рё
 	delete[]p_dic;
 }
