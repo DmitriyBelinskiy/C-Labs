@@ -7,7 +7,7 @@
 
 
 void question_proceed(worker *p_dic, int dic_exists_flag) {
-//Функция для обработки вопроса пользователю, продолжать или выйти из программы
+//Функция для обработки вопроса пользователю: продолжать или выйти из программы
 	char answer;
 	do {
 		printf("\n\n\tType \"n\" to quit the program and \"y\" to proceed: ");
