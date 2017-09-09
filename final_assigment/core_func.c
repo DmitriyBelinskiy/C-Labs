@@ -10,23 +10,23 @@ void start_dic() {
 	system("color F0"); //для красоты :)
 	int num_workers(0);
 	worker *dic = NULL;
-	int cicle(1), m(0);
+	int cycle(1), m(0);
 	char *fn = "test.dat";
 	//Флаги для контроля существования и заполнения словаря
 	int dic_exists_flag(0), dic_empty_flag(0);
 
 	//Цикл для выбора пункта меню словаря
-	while (cicle) {
+	while (cycle) {
 		//Функция со списком пунктов меню. Возвращает выбранный номер пункта.
 		m = menu(dic, num_workers);
 		switch (m) {
-		case 0: cicle = 0; //Выход из программы
+		case 0: cycle = 0; //Выход из программы
 			//Проверка существования словаря. Если словарь есть, освобождаем память и выходим из программы
 			if (dic_exists_flag == 1) 
 				freeMemory(dic);
 			dic_exists_flag = 0;
 			exit(1);
-		case 1: cicle = 1; //Создание словаря
+		case 1: cycle = 1; //Создание словаря
 			//Создаем словарь, если его нет. 
 			if (dic_exists_flag == 0) {
 				dic = create_dic(&num_workers);
@@ -35,7 +35,7 @@ void start_dic() {
 			question_proceed(dic, dic_exists_flag); //Спрашиваем, что делать дальше
 			break;
 
-		case 2: cicle = 1; //Удаляем существующий словарь
+		case 2: cycle = 1; //Удаляем существующий словарь
 			//Удаляем словарь, если он есть
 			if (dic_exists_flag == 1) {
 				dic = del_dic(dic, num_workers);
@@ -45,7 +45,7 @@ void start_dic() {
 			question_proceed(dic, dic_exists_flag);
 			break;
 			
-		case 3: cicle = 1; //Заполняем словарь
+		case 3: cycle = 1; //Заполняем словарь
 			//Заполняем словарь, если он есть
 			if (dic_exists_flag == 1) {
 				fill_dic(dic, num_workers);
@@ -54,7 +54,7 @@ void start_dic() {
 				question_proceed(dic, dic_exists_flag);
 				break;
 
-		case 4: cicle = 1; //Выводим содержимое словаря на экран
+		case 4: cycle = 1; //Выводим содержимое словаря на экран
 			if (dic_empty_flag == 1)
 				//Функция вывода содержимого словаря на экран
 				show_dic(dic, num_workers);
@@ -64,7 +64,7 @@ void start_dic() {
 			question_proceed(dic, dic_exists_flag);
 			break;
 
-		case 5: cicle = 1; //Сортируем словарь
+		case 5: cycle = 1; //Сортируем словарь
 			if (dic_empty_flag == 1) {
 				//Функция для сортировки словаря
 				sort_dic(dic, num_workers);
@@ -76,7 +76,7 @@ void start_dic() {
 			question_proceed(dic, dic_exists_flag);
 			break;
 	
-		case 6: cicle = 1; //Поиск в словаре
+		case 6: cycle = 1; //Поиск в словаре
 			if (dic_empty_flag == 1)
 				//Функция для поиска в словаре
 				search_dic(dic, num_workers);
@@ -86,7 +86,7 @@ void start_dic() {
 			question_proceed(dic, dic_exists_flag);
 			break;
 
-		case 7: cicle = 1; //Экспорт словаря в файл
+		case 7: cycle = 1; //Экспорт словаря в файл
 			if (dic_empty_flag == 1) {
 				if (!(export_file(fn, dic, num_workers))) {
 					printf("\n\tCan't open file!");
@@ -103,7 +103,7 @@ void start_dic() {
 			question_proceed(dic, dic_exists_flag);
 			break;
 
-		case 8: cicle = 1; //Выводим на экран словарь из файла
+		case 8: cycle = 1; //Выводим на экран словарь из файла
 			if (!(import_file(fn))) {
 				printf("\n\tCan't open file!");
 				break;
